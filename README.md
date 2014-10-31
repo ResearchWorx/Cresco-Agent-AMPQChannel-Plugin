@@ -31,6 +31,3 @@ Unless required by applicable law or agreed to in writing, software distributed 
 ###Project lead
 
 Cody Bumgardner (@codybum)
-=======
-Cresco-Agent-AMPQChannel-Plugin
-===============================
