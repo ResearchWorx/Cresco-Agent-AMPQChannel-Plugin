@@ -8,9 +8,10 @@ Cresco-Agent-AMPQChannel-Plugin
 ### Install
 
 1. Download/update/confirm avalability of the [Cresco-Agent](http://128.163.188.129:9998/job/Cresco-Agent/lastSuccessfulBuild/com.researchworx.cresco$cresco-agent/) 
-3. Download the [Latest Build](http://128.163.188.129:9998/job/Cresco-Agent-AMPQChannel-Plugin/lastSuccessfulBuild/com.researchworx$cresco-agent-controller-plugin/) of the Cresco-Agent-Controller and place it in the _plugin_ subdirectory of the agent directory.
+3. Download the [Latest Build](http://128.163.188.129:9998/job/Cresco-Agent-AMPQChannel-Plugin/lastStableBuild/com.researchworx.cresco$cresco-agent-ampqchannel-plugin/) of the Cresco-Agent-Controller and place it in the _plugin_ subdirectory of the agent directory.
 4. Modify _Cresco-Agent-Plugins.ini_ to configure your plug-in.
 5. Either restart the agent to load the plug-in or enable the agent through the controller.
+
 ---
 
 ### Usage
