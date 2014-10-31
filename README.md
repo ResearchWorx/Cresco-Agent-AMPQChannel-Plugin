@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Cresco-Agent-AMPQChannel-Plugin
 ==============================
 
@@ -34,6 +33,3 @@ Cody Bumgardner (@codybum)
 =======
 Cresco-Agent-AMPQChannel-Plugin
 ===============================
-
-AMPQ Communication Channel for Cresco Agent
->>>>>>> 9c9eea0fe34b9f91d95c26c664d7e24a96797747
