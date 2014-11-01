@@ -111,62 +111,7 @@ public class MsgEvent {
 		 
 	  }
 	
-	  public void setReturn_debug()
-	  {
-		
-		System.out.println("PreMessage");
-		System.out.println("MsgType=" + msgType.toString());
-		System.out.println("Region=" + msgRegion + " Agent=" + msgAgent + " plugin=" + msgPlugin);
-		
-		  Map<String,String> tmpMap = new HashMap<String,String>(params);
-		  
-		  StringBuilder sb = new StringBuilder();
-		  
-		    Iterator it = tmpMap.entrySet().iterator();
-		    while (it.hasNext()) {
-		        Map.Entry pairs = (Map.Entry)it.next();
-		        sb.append(pairs.getKey() + " = " + pairs.getValue() + "\n");
-		        //System.out.println(pairs.getKey() + " = " + pairs.getValue());
-		        it.remove(); // avoids a ConcurrentModificationException
-		    }
-		  System.out.println("params=" + sb.toString());
-
-		  
-		  String src_region = new String(getParam("src_region"));
-		  String src_agent = new String(getParam("src_agent"));
-		  String src_plugin = new String(getParam("src_plugin"));
-		  
-		  params.remove("src_region");
-		  params.remove("src_agent");
-		  params.remove("src_plugin");
-		  
-		  params.put("src_region", params.get("dst_region"));
-		  params.put("src_agent", params.get("dst_agent"));
-		  if(params.get("dst_plugin") != null)
-		  {
-			  params.put("src_plugin", params.get("dst_plugin"));
-		  }
-		  
-		  params.put("dst_region", src_region);
-		  setMsgRegion(src_region);
-		  params.put("dst_agent", src_agent);
-		  setMsgAgent(src_agent);
-		  
-		  if(src_plugin != null)
-		  {
-			  params.put("dst_plugin", src_plugin);
-			  setMsgPlugin(src_plugin);
-		  }
-		  else
-		  {
-			  params.remove("dst_plugin");
-			  setMsgPlugin(null);
-		  }
-		 
-		 
-	  }
-	  
-	  public String getMsgBody()
+	    public String getMsgBody()
 	  {
 		  return params.get("msg");
 	  }

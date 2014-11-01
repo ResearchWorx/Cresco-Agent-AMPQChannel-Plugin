@@ -9,9 +9,6 @@ import javax.xml.namespace.QName;
 
 import plugincore.PluginEngine;
 import shared.MsgEvent;
-import shared.MsgEventType;
-
-import com.rabbitmq.client.AMQP.BasicProperties;
 
 
 public class AMPQLogProducer implements Runnable {
