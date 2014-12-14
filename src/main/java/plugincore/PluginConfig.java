@@ -1,5 +1,9 @@
 package plugincore;
 
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.SubnodeConfiguration;
 
@@ -11,6 +15,32 @@ public class PluginConfig {
 	public PluginConfig(SubnodeConfiguration configObj) throws ConfigurationException
 	{
 	    this.configObj = configObj;
+	}
+	
+	public Map<String,String> getPluginConfig()
+	{
+		final Map<String,String> result=new TreeMap<String,String>();
+		  final Iterator it=configObj.getKeys();
+		  while (it.hasNext()) {
+		    final Object key=it.next();
+		    final String value=configObj.getString(key.toString());
+		    result.put(key.toString(),value);
+		  }
+		  return result;	
+	}
+	public String getPluginConfigString()
+	{
+		//final Map<String,String> result=new TreeMap<String,String>();
+		  StringBuilder sb = new StringBuilder();
+			final Iterator it=configObj.getKeys();
+		  while (it.hasNext()) {
+		    final Object key=it.next();
+		    final String value=configObj.getString(key.toString());
+		    //result.put(key.toString(),value);
+		    sb.append(key.toString() + "=" + value + ",");
+		  }
+		  return sb.toString().substring(0, sb.length() -1);
+		  //return result;	
 	}
 	public Boolean webDb()
 	{

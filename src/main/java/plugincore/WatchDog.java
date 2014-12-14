@@ -11,7 +11,7 @@ import shared.MsgEventType;
 
 
 public class WatchDog {
-	private Timer timer;
+	public Timer timer;
 	private long startTS;
 	private Map<String,String> wdMap;
 	
