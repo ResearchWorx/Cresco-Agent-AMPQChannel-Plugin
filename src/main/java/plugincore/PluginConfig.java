@@ -57,10 +57,12 @@ public class PluginConfig {
 	{
 		return configObj.getString("pluginname");
 	}
+	/*
 	public String getRegion()
 	{
 		return configObj.getString("region");
 	}
+	*/
 	public boolean getLogConsumerEnabled()
 	{
 		if(configObj.getString("enablelogconsumer").equals("1"))

@@ -180,7 +180,8 @@ public class PluginEngine {
 	    		rpc_channel.queueDeclare(RPC_CHANNEL_NAME, false, false, false, null);
 	    		rpc_channel.basicQos(1);
 	    		//LOG CHANNEL
-	    		LOG_CHANNEL_NAME = PluginEngine.config.getRegion() + "_log";
+	    		//LOG_CHANNEL_NAME = PluginEngine.config.getRegion() + "_log";
+	    		LOG_CHANNEL_NAME = region + "_log";
 	    		log_channel = PluginEngine.connection.createChannel();
 	    		log_channel.exchangeDeclare(LOG_CHANNEL_NAME, "fanout");
 	    	}

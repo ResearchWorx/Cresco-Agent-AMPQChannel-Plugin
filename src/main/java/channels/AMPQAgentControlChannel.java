@@ -57,7 +57,8 @@ public class AMPQAgentControlChannel  {
 		
 		MsgEvent CmdResponse = null; //set response to null
 	    
-        String requestQueueName = PluginEngine.config.getRegion() + "_control_" + ce.getMsgAgent(); 
+        //String requestQueueName = PluginEngine.config.getRegion() + "_control_" + ce.getMsgAgent(); 
+		String requestQueueName = PluginEngine.region + "_control_" + ce.getMsgAgent(); 
         String replyQueueName = channel.queueDeclare().getQueue();
         
         consumer = new QueueingConsumer(channel);

@@ -21,7 +21,8 @@ public class WatchDog {
 	      timer.scheduleAtFixedRate(new WatchDogTask(), 500, PluginEngine.config.getWatchDogTimer());
 	      wdMap = new HashMap<String,String>(); //for sending future WD messages
 	      	  
-	      MsgEvent le = new MsgEvent(MsgEventType.INFO,PluginEngine.config.getRegion(),null,null,"WatchDog timer set to " + PluginEngine.config.getWatchDogTimer() + " milliseconds");
+	      //MsgEvent le = new MsgEvent(MsgEventType.INFO,PluginEngine.config.getRegion(),null,null,"WatchDog timer set to " + PluginEngine.config.getWatchDogTimer() + " milliseconds");
+	      MsgEvent le = new MsgEvent(MsgEventType.INFO,PluginEngine.region,null,null,"WatchDog timer set to " + PluginEngine.config.getWatchDogTimer() + " milliseconds");
 	      le.setParam("src_region", PluginEngine.region);
 		  le.setParam("src_agent", PluginEngine.agent);
 		  le.setParam("src_plugin", PluginEngine.plugin);
