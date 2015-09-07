@@ -31,7 +31,7 @@ public class AMPQAgentControlChannel  {
 	private Unmarshaller CmdEventUnmarshaller;
 	private Channel channel;
 	private ConcurrentHashMap<String,Channel> agentChannelMap;
-	
+	//
 	
 	public AMPQAgentControlChannel() throws Exception {
 		
