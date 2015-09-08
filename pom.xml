@@ -56,6 +56,7 @@
         <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>	
       </manifest>
       <manifestEntries>
+      		  <artifactId>cresco-agent-ampqchannel-plugin</artifactId>
               <Implementation-Version>${project.version}.${buildNumber}.${maven.build.timestamp}</Implementation-Version>
       </manifestEntries>
     </archive>
