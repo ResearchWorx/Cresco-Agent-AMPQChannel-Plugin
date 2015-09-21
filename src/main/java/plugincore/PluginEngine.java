@@ -71,8 +71,21 @@ public class PluginEngine {
 	
 	public PluginEngine()
 	{
-		pluginName="AMPQPlugin";
-		rpcMap = new HashMap<String,Long>();
+		try
+		{
+			rpcMap = new HashMap<String,Long>();
+			File jarLocation = new File(PluginEngine.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+			pluginName = getPluginName(jarLocation.getAbsolutePath());
+			pluginVersion = getPluginVersion(jarLocation.getAbsolutePath());
+		}
+		catch(Exception ex)
+		{
+			System.out.println("PluginEngine: Could not set plugin name: " + ex.toString());
+			pluginName="cresco-agent-ampqchannel-plugin";
+			pluginVersion="unknown";
+		}
+		
+		
 	}
 	public void shutdown()
 	{
@@ -305,6 +318,56 @@ public class PluginEngine {
 		}
 		
 	}
-		
+	
+	public static String getPluginName(String jarFile) //This should pull the version information from jar Meta data
+	{
+			   String version;
+			   try{
+			   //String jarFile = AgentEngine.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+			   //System.out.println("JARFILE:" + jarFile);
+			   //File file = new File(jarFile.substring(5, (jarFile.length() )));
+			   File file = new File(jarFile);
+	          FileInputStream fis = new FileInputStream(file);
+	          @SuppressWarnings("resource")
+			   JarInputStream jarStream = new JarInputStream(fis);
+			   Manifest mf = jarStream.getManifest();
+			   
+			   Attributes mainAttribs = mf.getMainAttributes();
+	          version = mainAttribs.getValue("artifactId");
+			   }
+			   catch(Exception ex)
+			   {
+				   String msg = "Unable to determine Plugin Version " + ex.toString();
+				   System.err.println(msg);
+				   version = "Unable to determine Version";
+			   }
+			   return version;
+	}
+	
+	public static String getPluginVersion(String jarFile) //This should pull the version information from jar Meta data
+	{
+			   String version;
+			   try{
+			   //String jarFile = AgentEngine.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+			   //System.out.println("JARFILE:" + jarFile);
+			   //File file = new File(jarFile.substring(5, (jarFile.length() )));
+			   File file = new File(jarFile);
+	          FileInputStream fis = new FileInputStream(file);
+	          @SuppressWarnings("resource")
+			   JarInputStream jarStream = new JarInputStream(fis);
+			   Manifest mf = jarStream.getManifest();
+			   
+			   Attributes mainAttribs = mf.getMainAttributes();
+	          version = mainAttribs.getValue("Implementation-Version");
+			   }
+			   catch(Exception ex)
+			   {
+				   String msg = "Unable to determine Plugin Version " + ex.toString();
+				   System.err.println(msg);
+				   version = "Unable to determine Version";
+			   }
+			   return version;
+	}
+	
 		
 }
