@@ -68,6 +68,79 @@ public class MsgEvent {
 		  setParam("dst_plugin",getParam(src_plugin));
 	  }
 	  */
+	  public void setReturn2()
+	  {
+		  
+		String src_region = null;
+		String src_agent = null;
+		String src_plugin = null;
+		if(getParam("src_region") != null) //plugin
+		{
+			setMsgRegion(src_region);
+			src_region = new String(getParam("src_region"));
+			
+			if(getParam("src_agent") != null) //plugin
+			{
+				src_agent = new String(getParam("src_agent"));
+				setMsgAgent(src_agent);
+				
+				if(getParam("src_plugin") != null) //plugin
+				{
+					src_plugin = new String(getParam("src_plugin"));
+				}
+				else
+				{
+					setMsgPlugin(null);
+				}
+					
+			}
+			else
+			{
+				setMsgAgent(null);
+				setMsgPlugin(null);
+			}
+		}
+		else
+		{
+			setMsgRegion(null);
+			setMsgAgent(null);
+			setMsgPlugin(null);
+		}
+		  params.remove("src_region");
+		  params.remove("src_agent");
+		  params.remove("src_plugin");
+		
+		  if(getParam("dst_region") != null) //plugin
+		  {
+			  	params.put("src_region", params.get("dst_region"));
+			  	  
+			    if(getParam("dst_agent") != null) //plugin
+				{
+			    	params.put("src_agent", params.get("dst_agent"));
+			    	
+			    	if(getParam("dst_plugin") != null) //plugin
+					{
+						params.put("src_plugin", params.get("dst_plugin"));
+					}
+					else
+					{
+						params.remove("dst_plugin");
+					}
+				}
+			    else
+			    {
+			    	params.remove("dst_agent");
+					params.remove("dst_plugin");
+			    }
+		  }
+		  else
+		  {
+			  params.remove("dst_region");
+			  params.remove("dst_agent");
+			  params.remove("dst_plugin");
+		  }
+		 
+	  }
 	
 	public void setReturn()
 	  {
@@ -110,8 +183,8 @@ public class MsgEvent {
 		  
 		 
 	  }
-	
-	    public String getMsgBody()
+	  
+	  public String getMsgBody()
 	  {
 		  return params.get("msg");
 	  }
