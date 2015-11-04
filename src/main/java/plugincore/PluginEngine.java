@@ -75,6 +75,9 @@ public class PluginEngine {
 		try
 		{
 			rpcMap = new HashMap<String,Long>();
+			pluginName = getPluginName();
+			pluginVersion = getPluginVersion();
+		
 		}
 		catch(Exception ex)
 		{
@@ -139,10 +142,7 @@ public class PluginEngine {
 	//steps to init the plugin
 	public boolean initialize(ConcurrentLinkedQueue<MsgEvent> msgOutQueue,ConcurrentLinkedQueue<MsgEvent> msgInQueue, SubnodeConfiguration configObj, String region,String agent, String plugin)  
 	{
-			pluginName = getPluginName();
-			pluginVersion = getPluginVersion();
-		
-		
+			
 		commandExec = new CommandExec();
 		//this.msgOutQueue = msgOutQueue; //send directly to log queue
 		this.msgInQueue = msgInQueue; //messages to agent should go here
