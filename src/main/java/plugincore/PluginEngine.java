@@ -77,8 +77,8 @@ public class PluginEngine {
 			rpcMap = new HashMap<String,Long>();
 			System.out.println("W1");
 			String jarPath = PluginEngine.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+			System.out.println("anotherpath: "  + ClassLoader.getSystemClassLoader().getResource(".").getPath());
 			System.out.println("jarPath: " + jarPath);
-			System.out.println(ClassLoader.getSystemClassLoader().getResource(".").getPath());
 			File jarLocation = new File(jarPath);
 			System.out.println("W2");
 			System.out.println("jarLocation: " + jarLocation.getAbsolutePath());
