@@ -75,12 +75,13 @@ public class PluginEngine {
 		{
 			rpcMap = new HashMap<String,Long>();
 			File jarLocation = new File(PluginEngine.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+			System.out.println("jarLocation: " + jarLocation.getAbsolutePath());
 			pluginName = getPluginName(jarLocation.getAbsolutePath());
 			pluginVersion = getPluginVersion(jarLocation.getAbsolutePath());
 		}
 		catch(Exception ex)
 		{
-			System.out.println("PluginEngine: Could not set plugin name: " + ex.toString());
+			System.out.println("PluginEngine: Could not read plugin name: " + ex.toString());
 			pluginName="cresco-agent-ampqchannel-plugin";
 			pluginVersion="unknown";
 		}
