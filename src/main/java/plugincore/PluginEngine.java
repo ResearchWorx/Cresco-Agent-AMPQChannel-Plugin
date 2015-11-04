@@ -3,6 +3,7 @@ package plugincore;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.jar.Attributes;
@@ -73,27 +74,11 @@ public class PluginEngine {
 	{
 		try
 		{
-			System.out.println("W0");
 			rpcMap = new HashMap<String,Long>();
-			System.out.println("W1");
-			String jarPath = PluginEngine.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-			System.out.println("anotherpath: "  + ClassLoader.getSystemClassLoader().getResource(".").getPath());
-			System.out.println("jarPath: " + jarPath);
-			File jarLocation = new File(jarPath);
-			System.out.println("W2");
-			System.out.println("jarLocation: " + jarLocation.getAbsolutePath());
-			System.out.println("W3");
-			pluginName = getPluginName(jarLocation.getAbsolutePath());
-			System.out.println("W4");
-			pluginVersion = getPluginVersion(jarLocation.getAbsolutePath());
-			System.out.println("W5");
-			
 		}
 		catch(Exception ex)
 		{
-			System.out.println("PluginEngine: Could not read plugin name: " + ex.toString());
-			pluginName="cresco-agent-ampqchannel-plugin";
-			pluginVersion="unknown";
+			System.out.println("PluginEngine: Could not create plugin object: " + ex.toString());
 		}
 		
 		
@@ -152,6 +137,19 @@ public class PluginEngine {
 	//steps to init the plugin
 	public boolean initialize(ConcurrentLinkedQueue<MsgEvent> msgOutQueue,ConcurrentLinkedQueue<MsgEvent> msgInQueue, SubnodeConfiguration configObj, String region,String agent, String plugin)  
 	{
+		try {
+			String jarPath = PluginEngine.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+			File jarLocation = new File(jarPath);
+			pluginName = getPluginName(jarLocation.getAbsolutePath());
+			pluginVersion = getPluginVersion(jarLocation.getAbsolutePath());
+			
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		
+		
 		commandExec = new CommandExec();
 		//this.msgOutQueue = msgOutQueue; //send directly to log queue
 		this.msgInQueue = msgInQueue; //messages to agent should go here
