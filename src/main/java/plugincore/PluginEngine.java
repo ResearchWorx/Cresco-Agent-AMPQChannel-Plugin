@@ -171,7 +171,7 @@ public class PluginEngine {
 			//create logger
 			clog = new Clogger(msgInQueue,region,agent,plugin); //send logs directly to outqueue
 			
-			String startmsg = "Initializing Plugin: Region=" + region + " Agent=" + agent + " plugin=" + plugin + " version" + getVersion();
+			String startmsg = "Initializing Plugin: Region=" + region + " Agent=" + agent + " plugin=" + plugin + " version=" + getVersion();
 			clog.log(startmsg);
 			
 			
