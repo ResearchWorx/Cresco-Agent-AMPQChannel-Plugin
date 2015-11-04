@@ -73,11 +73,21 @@ public class PluginEngine {
 	{
 		try
 		{
+			System.out.println("W0");
 			rpcMap = new HashMap<String,Long>();
-			File jarLocation = new File(PluginEngine.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+			System.out.println("W1");
+			String jarPath = PluginEngine.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+			System.out.println("jarPath: " + jarPath);
+					
+			File jarLocation = new File(jarPath);
+			System.out.println("W2");
 			System.out.println("jarLocation: " + jarLocation.getAbsolutePath());
+			System.out.println("W3");
 			pluginName = getPluginName(jarLocation.getAbsolutePath());
+			System.out.println("W4");
 			pluginVersion = getPluginVersion(jarLocation.getAbsolutePath());
+			System.out.println("W5");
+			
 		}
 		catch(Exception ex)
 		{
