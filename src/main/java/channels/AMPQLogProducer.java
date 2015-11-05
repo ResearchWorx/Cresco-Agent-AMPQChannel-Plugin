@@ -57,7 +57,7 @@ public class AMPQLogProducer implements Runnable {
         	catch (IOException e1) 
         	{
 				e1.printStackTrace();
-				System.out.println(e1);
+				System.out.println("AMPQLogProducer : Error : " + e1);
 			} 
         	catch (InterruptedException e) 
         	{
@@ -108,7 +108,7 @@ public class AMPQLogProducer implements Runnable {
     	}
     	catch(Exception ex)
     	{
-    		System.out.println(ex);
+    		System.out.println("AMPQLogProducer : Error : " + ex);
     	}
     	try
     	{
